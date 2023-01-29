@@ -14,7 +14,7 @@ class IPSecureMiddleware(MiddlewareMixin):
 
 		if request.user.is_superuser:
 			pass
-		if request.user.is_anonymous:
+		elif request.user.is_anonymous:
 			pass
 		elif request.user.is_authenticated:
 			if not UserIPAddress.objects.filter(user=request.user,ip_address=client_ip,is_allowed=True).exists():
